@@ -33,21 +33,26 @@ export const NavBar = () => {
     };
 
     useEffect(() => {
-        if (openSearchDrawer) {
-            setTimeout(() => {
-                searchInputRef.current?.focus();
-            }, 250);
+        if (openDrawer) {
+            if (window.scrollY > 0) {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "auto",
+                });
+            }
+
+            document.body.style.overflow = "hidden";
+            document.documentElement.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+            document.documentElement.style.overflow = "";
         }
-    }, [openSearchDrawer]);
-
-    useEffect(() => {
-        const shouldLock = openDrawer || openSearchDrawer;
-        document.body.style.overflow = shouldLock ? "hidden" : "";
-
         return () => {
             document.body.style.overflow = "";
+            document.documentElement.style.overflow = "";
         };
-    }, [openDrawer, openSearchDrawer]);
+    }, [openDrawer]);
 
     return (
         <>
@@ -75,6 +80,11 @@ export const NavBar = () => {
           .search-bounce-delay {
             animation: searchBounceIn 0.7s cubic-bezier(1,0,.89,1) 0.08s both;
           }
+
+.drawer {
+  background: linear-gradient(from 120deg, #071344 0%,#17205a 28%,#3b075e 62%,#4b0058 100%);
+}
+
         `}
             </style>
 
@@ -151,9 +161,9 @@ export const NavBar = () => {
                             aria-label="Open menu"
                         >
                             <div className="group flex w-6 flex-col gap-1.5 cursor-pointer">
-                                <span className={`ml-auto block h-0.5  rounded-full bg-white transition-all duration-300  ${openDrawer?"w-[90%]":"w-full"}`}/>
-                                <span className={`ml-auto block h-0.5  rounded-full bg-white transition-all duration-300  ${openDrawer?"w-[70%]":"w-full"}`} />
-                                <span className={`ml-auto block h-0.5  rounded-full bg-white transition-all duration-300  ${openDrawer?"w-[85%]":"w-full"}`}/>
+                                <span className={`ml-auto block h-0.5  rounded-full bg-white transition-all duration-300  ${openDrawer ? "w-[90%]" : "w-full"}`} />
+                                <span className={`ml-auto block h-0.5  rounded-full bg-white transition-all duration-300  ${openDrawer ? "w-[70%]" : "w-full"}`} />
+                                <span className={`ml-auto block h-0.5  rounded-full bg-white transition-all duration-300  ${openDrawer ? "w-[85%]" : "w-full"}`} />
                             </div>
                         </button>
                     </div>
@@ -169,9 +179,10 @@ export const NavBar = () => {
                     }`}
             />
             <section
-                className={`fixed left-0 top-0 z-[80] h-screen w-full transform border-b border-white/10 shadow-2xl transition-all duration-700 ${openSearchDrawer
-                    ? "translate-y-0 opacity-100"
-                    : "-translate-y-full opacity-0"
+                className={`fixed left-0 top-0 z-[80] h-screen w-full transform border-b border-white/10 
+                    shadow-2xl transition-all duration-700 ${openSearchDrawer
+                        ? "translate-y-0 opacity-100"
+                        : "-translate-y-full opacity-0"
                     }`}
                 style={{
                     background:
@@ -179,13 +190,28 @@ export const NavBar = () => {
                 }}
             >
                 <div className="flex h-full w-full items-center justify-center px-4">
-                    <div className="grid w-full max-w-4xl grid-cols-[1fr_auto] items-center gap-4">
+                    <div className="grid w-full max-w-4xl  items-center gap-4 ">
                         {/* Search Box Animation Only */}
+                        <button
+                            type="button"
+                            onClick={closeSearch}
+                            className={`flex h-11 ml-auto 
+                                -translate-x-2.5 w-11 cursor-pointer
+                                 shrink-0 items-center 
+                                 justify-center rounded-xl border border-white/15 bg-white/10 text-white transition hover:bg-white/20 ${openSearchDrawer ? "drawer-content-delay" : ""
+                                }`}
+                            aria-label="Close search"
+                        >
+                            <X
+                                size={22}
+                                className="text-white transition-transform duration-500 ease-[cubic-bezier(1,0,.89,1)] hover:rotate-[360deg] hover:scale-110"
+                            />
+                        </button>
                         <div
-                            className={`flex justify-center ${openSearchDrawer ? "drawer-content-animate" : ""
+                            className={`flex w-full justify-center ${openSearchDrawer ? "drawer-content-animate" : ""
                                 }`}
                         >
-                            <div className="relative w-full max-w-2xl">
+                            <div className="relative w-full">
                                 <Search
                                     size={22}
                                     className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-purple-200"
@@ -195,24 +221,13 @@ export const NavBar = () => {
                                     ref={searchInputRef}
                                     type="search"
                                     placeholder="Search here..."
-                                    className="h-14 w-full rounded-full border border-white/15 bg-white/10 pl-14 pr-5 font-space text-sm font-medium text-white outline-none backdrop-blur-md transition placeholder:text-purple-100/70 focus:border-purple-300 focus:bg-white/15 focus:ring-4 focus:ring-purple-400/20 sm:h-16 sm:text-base"
+                                    className="h-14 w-full rounded-xl border border-white/15 bg-white/10 pl-14 pr-5 font-space text-sm font-medium text-white outline-none backdrop-blur-md transition placeholder:text-purple-100/70 focus:border-purple-300 focus:bg-white/15 focus:ring-4 focus:ring-purple-400/20 sm:h-16 sm:text-base"
                                 />
                             </div>
                         </div>
 
                         {/* X Button Animation Only */}
-                        <button
-                            type="button"
-                            onClick={closeSearch}
-                            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/20 ${openSearchDrawer ? "drawer-content-delay" : ""
-                                }`}
-                            aria-label="Close search"
-                        >
-                            <X
-                                size={22}
-                                className="text-white transition-transform duration-500 ease-[cubic-bezier(1,0,.89,1)] hover:rotate-[360deg] hover:scale-110"
-                            />
-                        </button>
+
                     </div>
                 </div>
             </section>
@@ -227,16 +242,13 @@ export const NavBar = () => {
 
             {/* Mobile Drawer - No Logo, No Search Bar */}
             <aside
-                className={`fixed left-0 top-0 z-[60] h-full w-[82%] max-w-xs transform shadow-2xl 
-                    transition-transform duration-700 lg:hidden ${openDrawer ? "translate-x-0" : "-translate-x-full"
+                className={`fixed left-0 top-0 z-[60]  bg-[linear-gradient(120deg,#4b0058_0%,#3b075e_35%,#17205a_70%,#071344_100%)]  h-full w-[82%] max-w-xs  transform shadow-2xl 
+                    transition-transform duration-700 lg:hidden ${openDrawer ? "translate-x-0  " : "-translate-x-full"
                     }`}
-                style={{
-                    background:
-                        "linear-gradient(180deg, #4b0058 0%, #3b075e 35%, #211353 68%, #071344 100%)",
-                }}
+
             >
                 <div className="flex h-full flex-col">
-                    {/* Close Button Only */}
+
                     <div className="flex items-center justify-end border-b border-white/10 p-3">
                         <button
                             type="button"
@@ -253,8 +265,8 @@ export const NavBar = () => {
                         </button>
                     </div>
 
-                    {/* Drawer Menu Only */}
-                    <ul className="flex-1 overflow-y-auto px-2">
+
+                    <ul className="flex-1 overflow-hidden px-2">
                         {navItems.map((item) => (
                             <li key={item.path}>
                                 <Link

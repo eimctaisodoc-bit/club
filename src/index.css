@@ -18,11 +18,9 @@
 :root {
   --bg-dark: #050508;
 
-  --btn-grad: linear-gradient(
-  90deg,
-  #9421b4 0%,
-  #1e6cc2 100%
-);
+  --btn-grad: linear-gradient(90deg,
+      #9421b4 0%,
+      #1e6cc2 100%);
 
   --background: oklch(1 0 0);
 
@@ -142,16 +140,14 @@ body {
   border-radius: inherit;
 
   background:
-    conic-gradient(
-      from 0deg,
+    conic-gradient(from 0deg,
       transparent 0deg,
       transparent 0deg,
       rgba(243, 243, 243, 0.06) 285deg,
-      rgba(255,255,255,0.28) 315deg,
-      rgba(255,255,255,0.85) 342deg,
+      rgba(255, 255, 255, 0.28) 315deg,
+      rgba(255, 255, 255, 0.85) 342deg,
       #ffffff 350deg,
-      transparent 360deg
-    );
+      transparent 360deg);
 
   animation:
     spin 2.8s linear infinite;
@@ -221,15 +217,14 @@ body {
 
 .premium-btn:hover .bef {
   box-shadow:
-    inset 0 1px 1px rgba(255,255,255,0.16),
-    0 14px 26px -12px rgba(255,255,255,0.18);
+    inset 0 1px 1px rgba(255, 255, 255, 0.16),
+    0 14px 26px -12px rgba(255, 255, 255, 0.18);
 }
 
 /* Active */
 .premium-btn:active {
   transform:
-    translateY(1px)
-    scale(0.985);
+    translateY(1px) scale(0.985);
 }
 
 @theme inline {
@@ -313,10 +308,13 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
 }
+

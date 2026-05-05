@@ -9,6 +9,8 @@ import { NavBar } from './components/utilities/navbar'
 import { TestProvider } from './components/context/provider'
 import { Home_ } from './components/pages/home';
 import { Contact } from './components/pages/contact';
+import { AnimatePresence } from 'framer-motion';
+import { Footer } from './components/utilities/footer';
 
 
 
@@ -17,16 +19,20 @@ function App() {
 
   return (
     <>
+    <AnimatePresence>
+
       <BrowserRouter>
         <TestProvider>
           <NavBar />
           <Home_ />
          <Contact/>
+         <Footer/>
           {/* </Smoke> */}
          
           {/* </Smoke> */}
         </TestProvider>
       </BrowserRouter>
+    </AnimatePresence>
     </>
   )
 }
