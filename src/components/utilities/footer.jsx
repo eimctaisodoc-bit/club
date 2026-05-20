@@ -3,14 +3,18 @@ import { MailCheck, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatedBorder } from "./animatedBorder";
 import { RotatingTriangle } from "./triangle";
+import logo from '../../assets/logo.png';
+import modal1 from "../../assets/modal1.jpg";
+import modal2 from "../../assets/modal2.jpg";
+import modal3 from "../../assets/modal3.jpg";
 
 const instagramFeeds = [
-  "/images/feed-1.jpg",
-  "/images/feed-2.jpg",
-  "/images/feed-3.jpg",
-  "/images/feed-4.jpg",
-  "/images/feed-5.jpg",
-  "/images/feed-6.jpg",
+  { img: modal1 },
+  { img: modal2 },
+  { img: modal3 },
+  { img: modal1 },
+  { img: modal2 },
+  { img: modal3 },
 ];
 
 const FacebookSvg = ({ className = "h-6 w-6" }) => {
@@ -41,9 +45,9 @@ const YoutubeSvg = ({ className = "h-7 w-7" }) => {
 
 export const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-[#08051b] text-white">
+    <footer className="relative overflow-hidden bg-[linear-gradient(145deg,#061022_0%,#0b1838_45%,#13214f_100%)] text-white">
       {/* Right Glow Line */}
-      <div className="absolute right-0 top-0 h-full w-[2px] bg-gradient-to-b from-fuchsia-500 via-purple-500 to-blue-500" />
+      <div className="absolute right-0 top-0 h-full w-[2px] bg-gradient-to-b from-[#d4af37] via-[#f5c546] to-[#d4af37]" />
 
       {/* Subscribe Top Box */}
           <div className="pointer-events-none absolute  right-44 top-0
@@ -51,47 +55,7 @@ export const Footer = () => {
            <RotatingTriangle />
           </div>
       <div className="relative mx-auto w-full max-w-7xl px-6 pt-12  sm:px-10">
-        <div className="relative overflow-hidden rounded-2xl border border-fuchsia-500/40 bg-white/[0.04] px-5 py-6 backdrop-blur-sm sm:px-7 lg:px-10 lg:py-8">
-          
-          {/* Triangle Position */}
-
-          <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            {/* Text */}
-            <div className="max-w-2xl">
-              <h3 className="text-xl font-black uppercase tracking-tight text-white sm:text-2xl">
-                Stay Connected With RockOn
-              </h3>
-
-              <p className="mt-3 text-sm leading-7 text-slate-400 sm:text-[15px]">
-                Collect data on how users interact with the footer, such as which
-                links they click, how long they spend in the footer section, and
-                whether they scroll to the bottom.
-              </p>
-            </div>
-
-            {/* Input + Button */}
-            <div className="grid gap-3 sm:grid-cols-[1fr_auto] lg:justify-end">
-              <div className="relative w-full sm:min-w-[320px]">
-                <MailCheck
-                  size={19}
-                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-fuchsia-300"
-                />
-
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="h-13 w-full rounded-xl border border-white/10 bg-white/10 pl-12 pr-4 text-sm text-white outline-none transition placeholder:text-slate-400 focus:border-fuchsia-400 focus:bg-white/[0.13] focus:ring-2 focus:ring-fuchsia-500/20"
-                />
-              </div>
-
-              <AnimatedBorder>
-                <button className="h-13 min-w-[135px] rounded-xl px-5 text-sm font-bold uppercase tracking-wide text-white">
-                  Subscribe
-                </button>
-              </AnimatedBorder>
-            </div>
-          </div>
-        </div>
+      
       </div>
 
       {/* Main Footer Grid */}
@@ -100,7 +64,7 @@ export const Footer = () => {
         <div>
           <div className="mb-6">
             <h2 className="text-4xl font-black uppercase tracking-tighter text-white">
-              ROCK<span className="text-fuchsia-400">ON</span>
+              Top Durbar Rodhi <span className="text-[#d4af37]">Club</span>
             </h2>
 
             <p className="mt-1 text-[10px] uppercase tracking-[0.45em] text-white/70">
@@ -109,28 +73,27 @@ export const Footer = () => {
           </div>
 
           <p className="max-w-xs text-[15px] leading-7 text-slate-400">
-            From the latest news and releases to exclusive interviews and live
-            concert coverage, we bring the heart of rock music to your fingertips.
+            We try to give our best Hospitality and Entertainment to our Guests.
           </p>
 
           <div className="mt-8 flex items-center gap-4">
             <Link
-              to="#"
-              className="grid h-12 w-12 place-items-center rounded-md border border-fuchsia-500/40 bg-white/5 text-white/80 transition hover:border-fuchsia-400 hover:bg-fuchsia-500/20 hover:text-white"
+              to="https://www.facebook.com/durbarrodhigharbishowjyotimall4thmall/about"
+              className="grid h-12 w-12 place-items-center rounded-md border border-[#d4af37]/40 bg-white/5 text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/20 hover:text-[#d4af37]"
             >
               <FacebookSvg className="h-6 w-6" />
             </Link>
 
             <Link
               to="#"
-              className="grid h-12 w-12 place-items-center rounded-md border border-fuchsia-500/40 bg-white/5 text-white/80 transition hover:border-fuchsia-400 hover:bg-fuchsia-500/20 hover:text-white"
+              className="grid h-12 w-12 place-items-center rounded-md border border-[#d4af37]/40 bg-white/5 text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/20 hover:text-[#d4af37]"
             >
               <InstagramSvg className="h-6 w-6" />
             </Link>
 
             <Link
-              to="#"
-              className="grid h-12 w-12 place-items-center rounded-md border border-fuchsia-500/40 bg-white/5 text-white/80 transition hover:border-fuchsia-400 hover:bg-fuchsia-500/20 hover:text-white"
+              to="https://www.youtube.com/@rockonmusic"
+              className="grid h-12 w-12 place-items-center rounded-md border border-[#d4af37]/40 bg-white/5 text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/20 hover:text-[#d4af37]"
             >
               <YoutubeSvg className="h-7 w-7" />
             </Link>
@@ -139,7 +102,7 @@ export const Footer = () => {
 
         {/* Instagram Feeds */}
         <div>
-          <FooterTitle title="Instagram Feeds" />
+          <FooterTitle title="Facebook Gallery" />
 
           <div className="mt-10 grid max-w-[260px] grid-cols-3 gap-3">
             {instagramFeeds.map((img, index) => (
@@ -148,7 +111,7 @@ export const Footer = () => {
                 className="group h-[78px] overflow-hidden rounded-sm bg-white/10"
               >
                 <img
-                  src={img}
+                  src={img.img}
                   alt={`Instagram Feed ${index + 1}`}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                 />
@@ -163,26 +126,49 @@ export const Footer = () => {
 
           <div className="mt-10 space-y-6 text-slate-400">
             <div className="flex items-start gap-3">
-              <MapPin className="mt-1 shrink-0 text-slate-400" size={25} />
+              <MapPin className="mt-1 shrink-0 text-[#d4af37]" size={25} />
               <div>
                 <h4 className="font-semibold text-slate-300">Address</h4>
                 <p className="mt-1 leading-6">
-                  7311 Wild Rose Court Casselberry,
+                  Jamal, 4th Floor of Bishwojyoti Mall,
                   <br />
-                  FL 32707
+                  Kathmandu, Nepal, 44600
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <Phone className="mt-1 shrink-0 text-slate-400" size={23} />
+              <Phone className="mt-1 shrink-0 text-[#d4af37]" size={23} />
               <div>
                 <h4 className="font-semibold text-slate-300">Call Us</h4>
-                <p className="mt-1 leading-6">
-                  +1-202-555-0153
+                <div className="mt-1 leading-6 space-y-1">
+                  <Link
+                    to="tel:+9779851090035"
+                    className="inline-block text-slate-400 transition hover:text-white hover:underline"
+                  >
+                    +977 985-1090035
+                  </Link>
                   <br />
-                  +1-252-555-0114
-                </p>
+                  <Link
+                    to="tel:+9779708835635"
+                    className="inline-block text-slate-400 transition hover:text-white hover:underline"
+                  >
+                    +977 970-8835635
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <MailCheck className="mt-1 shrink-0 text-[#d4af37]" size={23} />
+              <div>
+                <h4 className="font-semibold text-slate-300">Email</h4>
+                <Link
+                  to="mailto:ashokgiri123@gmail.com"
+                  className="mt-1 inline-block leading-6 text-slate-400 transition hover:text-white hover:underline"
+                >
+                  ashokgiri123@gmail.com
+                </Link>
               </div>
             </div>
           </div>
@@ -209,7 +195,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-6 rounded-md border border-fuchsia-500/40 bg-white/5 px-5 py-5 text-center shadow-[0_0_30px_rgba(168,85,247,0.15)]">
+          <div className="mt-6 rounded-md border border-[#d4af37]/40 bg-white/5 px-5 py-5 text-center shadow-[0_0_30px_rgba(212,175,55,0.15)]">
             <p className="text-base font-semibold text-white">
               Every Sunday Happy Hour
             </p>
@@ -235,7 +221,7 @@ const FooterTitle = ({ title }) => {
   return (
     <div>
       <h3 className="font-serif text-lg font-bold text-white">{title}</h3>
-      <div className="mt-3 h-[2px] w-[100px] bg-gradient-to-r from-fuchsia-500 to-blue-500" />
+      <div className="mt-3 h-[2px] w-[100px] bg-gradient-to-r from-[#d4af37] to-[#f5c546]" />
     </div>
   );
 };
