@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { X } from "lucide-react";
+import { X, Home, Info, Sparkles, Image, CalendarDays, Phone } from "lucide-react";
 import { AnimatedBorder } from "./animatedBorder";
 
 export const NavBar = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
 
     const navItems = [
-        { name: "Home", path: "/" },
-        { name: "About", path: "/about" },
-        { name: "Service", path: "/services" },
-        { name: "Gallery", path: "/gallery" },
-       { name: "Events", path: "/events" },
-        { name: "Contact Us", path: "/contact" },
+        { name: "Home", path: "/", icon: Home },
+        { name: "About", path: "/about", icon: Info },
+        { name: "Service", path: "/services", icon: Sparkles },
+        { name: "Gallery", path: "/gallery", icon: Image },
+        { name: "Events", path: "/events", icon: CalendarDays },
+        { name: "Contact Us", path: "/contact", icon: Phone },
     ];
 
     const closeDrawer = () => {
@@ -84,31 +84,37 @@ export const NavBar = () => {
                     {/* DESKTOP MENU */}
                     <div className="hidden lg:block">
                         <ul className="flex items-center gap-6">
-                            {navItems.map((item) => (
-                                <li key={item.path} className="group relative">
-                                    <Link
-                                        to={item.path}
-                                        className="
-                      relative inline-block
+                            {navItems.map((item) => {
+                                const Icon = item.icon;
+                                return (
+                                    <li key={item.path} className="group relative">
+                                        <Link
+                                            to={item.path}
+                                            className="
+                      relative inline-flex items-center gap-2
                       font-space text-md font-medium
                       text-[#d1a645]
                       transition duration-300
                     "
-                                    >
-                                        {item.name}
+                                        >
+                                            {Icon && (
+                                                <Icon className="h-4 w-4 text-[#d1a645] transition group-hover:text-white" />
+                                            )}
+                                            {item.name}
 
-                                        <span
-                                            className="
+                                            <span
+                                                className="
                         absolute -bottom-1 left-0
                         h-[2px] w-0
                         bg-[#d1a645]
                         transition-all duration-300 ease-out
                         group-hover:w-full
                       "
-                                        />
-                                    </Link>
-                                </li>
-                            ))}
+                                            />
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
 
@@ -222,24 +228,31 @@ export const NavBar = () => {
 
                     {/* NAV ITEMS */}
                     <ul className="flex-1 overflow-hidden px-2">
-                        {navItems.map((item) => (
-                            <li key={item.path}>
-                                <Link
-                                    to={item.path}
-                                    onClick={closeDrawer}
-                                    className="
-                    block border-b border-white/10
+                        {navItems.map((item) => {
+                            const Icon = item.icon;
+                            return (
+                                <li key={item.path}>
+                                    <Link
+                                        to={item.path}
+                                        onClick={closeDrawer}
+                                        className="
+                    flex items-center gap-3
+                    border-b border-white/10
                     px-7 py-4
                     text-base font-medium text-white
                     transition duration-300
                     hover:bg-[#D4AF37]/10
                     hover:text-[#d1a645]
                   "
-                                >
-                                    {item.name}
-                                </Link>
-                            </li>
-                        ))}
+                                    >
+                                        {Icon && (
+                                            <Icon className="h-5 w-5 text-[#d1a645]" />
+                                        )}
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
             </aside>

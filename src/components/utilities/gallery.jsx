@@ -182,7 +182,7 @@ export const Gallery = () => {
         {/* Masonry grid */}
         <div
           key={key}
-          className="columns-1 sm:columns-2 lg:columns-3 gap-4"
+          className="columns-2 lg:columns-3 gap-4"
         >
           {filtered.map((item, i) => (
             <GalleryCard key={item.id} item={item} index={i} />
