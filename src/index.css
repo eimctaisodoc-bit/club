@@ -1,4 +1,4 @@
-   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap');
+   /* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap'); */
 
 
 @import "tailwindcss";
@@ -14,9 +14,11 @@
 :root {
   --bg-dark: #050508;
 
-  --btn-grad: linear-gradient(90deg,
-      #b42121 0%,
-      #1e6cc2 100%);
+  --btn-grad: linear-gradient(135deg,
+      #fff3b5 0%,
+      #d8a63a 35%,
+      #b67c18 55%,
+      #7a4d0d 100%);
 
 }
 
@@ -40,6 +42,51 @@ h1, h2, h3, h4, h5, h6 {
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes goldSpin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.gold-ring-avatar {
+  overflow: hidden;
+  padding: 2px;
+  background:
+    conic-gradient(from 0deg,
+      rgba(245, 208, 111, 0.15),
+      #d4af37 18%,
+      #ffe79b 42%,
+      #b8860b 68%,
+      #f5d06f 84%,
+      rgba(245, 208, 111, 0.15));
+  animation: goldSpin 6s linear infinite;
+  animation-play-state: running;
+  box-shadow:
+    0 0 24px rgba(212, 175, 55, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  will-change: transform;
+}
+
+.gold-ring-avatar::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  background: linear-gradient(145deg, #07152e 0%, #102a56 100%);
+  z-index: 0;
+}
+
+.gold-ring-avatar img {
+  transform: none;
+  will-change: auto;
+}
+
+.gold-ring-avatar img,
+.gold-ring-avatar div {
+  position: relative;
+  z-index: 1;
 }
 
 .premium-btn {
@@ -105,6 +152,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: inherit;
 
   background: var(--btn-grad);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -4px 6px rgba(90, 58, 0, 0.45),
+    0 10px 20px rgba(184, 140, 38, 0.28);
 
   z-index: 1;
 }

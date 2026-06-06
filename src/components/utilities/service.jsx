@@ -3,179 +3,183 @@ import { Music2, Wine, Drum, Sparkles, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
-    icon: <Music2 size={24} />,
+    icon: <Music2 size={24} aria-hidden="true" />,
     title: "Live Dohori Music",
     desc: "Authentic Nepali dohori performances blended with modern nightlife energy and live entertainment.",
   },
   {
-    icon: <Wine size={24} />,
+    icon: <Wine size={24} aria-hidden="true" />,
     title: "Premium Lounge",
     desc: "Luxury seating, premium drinks, ambient lighting, and elite hospitality designed for unforgettable nights.",
   },
   {
-    icon: <Drum size={24} />,
+    icon: <Drum size={24} aria-hidden="true" />,
     title: "Cultural Events",
     desc: "Traditional dance shows, folk music nights, festive celebrations, and immersive Nepali cultural experiences.",
   },
   {
-    icon: <Sparkles size={24} />,
+    icon: <Sparkles size={24} aria-hidden="true" />,
     title: "Private Parties",
     desc: "Birthdays, VIP gatherings, and special occasions with fully customized nightlife experiences.",
   },
 ];
 
-function SpinningBorderButton({ children }) {
-  return (
-    <button className="relative inline-flex items-center justify-center p-[2px] rounded-full overflow-hidden">
-      {/* spinning conic border — sits behind label via z-index */}
-      <span
-        className="pointer-events-none absolute inset-0 rounded-full"
-        style={{
-          background:
-            "conic-gradient(from var(--btn-angle, 0deg), transparent 0deg, transparent 280deg, rgba(212,175,55,0.25) 310deg, rgba(255,255,255,0.9) 348deg, transparent 360deg)",
-          animation: "spinAngle 3.5s linear infinite",
-        }}
-      />
-      {/* solid inner fill — masks the conic centre so only border shows */}
-      <span className="absolute inset-[1.5px] rounded-full bg-gradient-to-br from-slate-950 via-[#162033] to-slate-800 z-10" />
-      {/* label on top */}
-      <span className="relative z-20 flex items-center gap-2 px-5 py-2.5 text-[11px] font-bold tracking-widest uppercase text-white rounded-full whitespace-nowrap">
-        {children}
-      </span>
-    </button>
-  );
-}
+// ─── COMPONENT: Spinning Border Button ───────────────────────────────────────
 
 
-
-export function ServiceCard({ icon, title, desc }) {
+// ─── COMPONENT: Service Card ─────────────────────────────────────────────────
+function ServiceCard({ icon, title, desc }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
+    // SEO FIX: Using <article> inside the list item denotes a self-contained piece of content
+    <article
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative p-[1.5px] rounded-[22px] h-full transition-transform duration-500 hover:-translate-y-2"
+      className="relative p-[1.5px] rounded-2xl h-full transition-transform duration-500 hover:-translate-y-2 group flex flex-col"
     >
-      {/* Animated Border Only */}
+      {/* Animated Conic Border */}
       <span
-        className="pointer-events-none absolute inset-0 rounded-lg z-0"
+        className="pointer-events-none absolute inset-0 rounded-2xl z-0 opacity-100 transition-opacity duration-500"
         style={{
-          padding: "1.5px", // This controls the thickness of the animated border
+          padding: "1.5px",
           background:
-            "conic-gradient(from var(--card-angle, 0deg), transparent 0deg, transparent 200deg, rgba(212,175,55,0.15) 260deg, rgba(212,175,55,0.75) 320deg, rgba(255,255,255,0.95) 346deg, rgba(212,175,55,0.4) 355deg, transparent 360deg)",
-          animation: "spinAngle 4s linear infinite",
-          // The magic happens here: this masks out the inner content area
+            "conic-gradient(from var(--card-angle, 0deg), transparent 0deg, transparent 200deg, rgba(196,157,82,0.1) 260deg, rgba(196,157,82,0.7) 320deg, rgba(232,201,122,1) 346deg, rgba(196,157,82,0.4) 355deg, transparent 360deg)",
+          animation: "spinAngle 4.5s linear infinite",
           WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
         }}
+        aria-hidden="true"
       />
 
       <div
-        className={`relative z-10 flex flex-col h-full rounded-lg border border-white/[0.07] p-6 backdrop-blur-xl transition-colors duration-500 ${
-          hovered ? "bg-white/[0.07]" : "bg-white/[0.03]"
+        className={`relative z-10 flex flex-col h-full rounded-[15px] border border-white/[0.05] p-6 sm:p-7 backdrop-blur-xl transition-colors duration-500 ${
+          hovered ? "bg-[#080C18]/80" : "bg-white/[0.03]"
         }`}
       >
-        {/* Hover glow — purely cosmetic, pointer-events-none */}
+        {/* Hover Inner Glow */}
         <div
-          className={`pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-br from-[#d4af37]/5 via-transparent to-cyan-500/5 transition-opacity duration-500 ${
+          className={`pointer-events-none absolute inset-0 rounded-[15px] bg-gradient-to-br from-[#c49d52]/15 via-transparent to-[#1e3a8a]/15 transition-opacity duration-500 ${
             hovered ? "opacity-100" : "opacity-0"
           }`}
+          aria-hidden="true"
         />
 
         <div className="relative z-10 flex flex-col flex-1">
-          {/* Icon */}
-          <div className="w-14 h-14 flex items-center justify-center rounded-2xl border border-[#d4af37]/20 bg-gradient-to-br from-[#d4af37]/10 to-white/5 text-[#f5d06f] shrink-0">
-            {icon}
-          </div>
+          <header>
+            {/* Icon */}
+            <div className="w-14 h-14 flex items-center justify-center rounded-xl border border-[#c49d52]/30 bg-gradient-to-br from-[#c49d52]/15 to-transparent text-[#c49d52] shrink-0 transition-transform duration-500 group-hover:scale-110">
+              {icon}
+            </div>
 
-          {/* Title */}
-          <h3 className="mt-5 text-xl font-semibold text-white">{title}</h3>
+            {/* Title */}
+            <h3 className="mt-5 sm:mt-6 font-['Cormorant_Garamond'] text-2xl sm:text-[26px] font-bold text-white tracking-wide">
+              {title}
+            </h3>
+          </header>
 
           {/* Divider */}
-          <div className="mt-3 h-px w-full bg-gradient-to-r from-[#d4af37]/40 to-transparent" />
+          <div className="mt-4 h-[1px] w-12 bg-[#c49d52]/40 transition-all duration-500 group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-[#c49d52]/70 group-hover:to-transparent" aria-hidden="true" />
 
-          {/* Description — flex-1 pushes button to bottom */}
-          <p className="mt-4 text-sm leading-7 text-slate-400 flex-1">{desc}</p>
+          {/* Description */}
+          <p className="mt-4 font-['DM_Sans'] text-[14px] sm:text-[15px] leading-[1.7] text-white/65 flex-1 group-hover:text-white/85 transition-colors duration-300">
+            {desc}
+          </p>
 
-          {/* CTA Button — always at the bottom */}
-          <div className="mt-7">
-            {/* Replace with your actual SpinningBorderButton component */}
-            <button className="flex items-center gap-2 text-white">
-              Explore <ArrowUpRight size={14} />
-            </button>
-          </div>
+          
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
+// ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 export default function RodhiServices() {
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-br from-[#020617] via-[#07152e] to-[#0f2d5c] py-20 sm:py-28 text-white"
-      aria-labelledby="rodhi-heading"
+      // MOBILE FIRST: Starts with py-16 px-4, scales up to py-32 px-12
+      // THEME: Deep navy/black base with a subtle radial glow in the center
+      className="relative overflow-hidden bg-[#02040a] bg-[radial-gradient(ellipse_at_center,_#0a1128_0%,_#02040a_80%)] py-16 sm:py-24 lg:py-32 text-white"
+      aria-labelledby="services-heading"
+      id="services"
     >
-      {/* Background glows */}
-      <div className="pointer-events-none absolute -left-28 -top-28 h-72 w-72 rounded-full bg-[#d4af37]/10 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl" />
-
-      {/* Floating particles */}
+      {/* ─── FLASHING STAR SPARKS BACKGROUND ─── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <span
-            key={i}
-            className="absolute h-[2px] w-[2px] rounded-full bg-white/30"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: `float ${4 + Math.random() * 7}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 6}s`,
-              opacity: Math.random(),
-            }}
-          />
-        ))}
+        {/* Generates 40 stars with randomized positions, colors, and animation delays */}
+        {Array.from({ length: 40 }).map((_, i) => {
+          const isGold = i % 4 === 0;
+          return (
+            <div
+              key={i}
+              className={`absolute aspect-square rounded-sm ${
+                isGold ? "bg-[#c49d52] shadow-[0_0_12px_2px_#c49d52]" : "bg-white shadow-[0_0_10px_2px_#fff]"
+              }`}
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                width: `${Math.random() * 2 + 1.5}px`,
+                animation: `sparkle ${1 + Math.random() * 3}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 4}s`,
+              }}
+            />
+          );
+        })}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Decorative Blur Orbs for depth */}
+      <div className="pointer-events-none absolute top-0 right-0 h-[400px] w-[400px] rounded-full bg-[#1e3a8a]/20 blur-[120px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-[#c49d52]/10 blur-[100px]" aria-hidden="true" />
 
-        {/* Header */}
+      <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-12">
+        {/* SEO FIX: Use <header> for the section's introduction */}
         <header className="mx-auto max-w-3xl text-center">
-          <p className="mb-5 inline-flex items-center rounded-full border border-[#d4af37]/20 bg-[#d4af37]/10 px-5 py-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#f5d06f] backdrop-blur-md">
-            Premium Rodhi Club Services
-          </p>
+          <div className="mb-5 sm:mb-6 inline-flex items-center gap-2 rounded-[2px] border border-[#c49d52]/50 px-3 py-1.5 backdrop-blur-sm bg-black/40">
+            {/* The dot pulses to mimic a flashing club light */}
+            <span className="block h-1.5 w-1.5 rounded-full bg-[#c49d52] animate-pulse" aria-hidden="true" />
+            <span className="font-['DM_Sans'] text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-[#c49d52]">
+              Premium Services
+            </span>
+          </div>
 
           <h2
-            id="rodhi-heading"
-            className="font-serif text-4xl font-semibold leading-tight text-[#f5d06f] sm:text-5xl lg:text-6xl"
+            id="services-heading"
+            // MOBILE FIRST typography clamp
+            className="font-['Cormorant_Garamond'] text-[clamp(36px,7vw,64px)] font-bold leading-[1.05] text-white tracking-[-0.01em]"
           >
             Traditional Vibes
             <br />
-            Modern Nightlife
+            <span className="text-[#e8c97a]">Modern Nightlife</span>
           </h2>
 
-          <div className="mx-auto mt-6 h-[2px] w-32 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
+          {/* Elegant Divider */}
+          <div className="flex items-center justify-center gap-3 my-6 sm:my-7" aria-hidden="true">
+            <div className="h-px w-10 sm:w-14 bg-[#c49d52]/40" />
+            <span className="text-[9px] sm:text-[10px] tracking-[0.3em] text-[#c49d52]">✦</span>
+            <div className="h-px w-10 sm:w-14 bg-[#c49d52]/40" />
+          </div>
 
-          <p className="mt-6 text-sm leading-7 text-slate-300 sm:text-base">
-            Authentic dohori music, luxury lounges, and immersive Nepali
-            culture — crafted for unforgettable modern celebrations.
+          <p className="mx-auto max-w-[500px] font-['DM_Sans'] text-[14px] sm:text-[16px] leading-[1.65] sm:leading-[1.75] text-white/65">
+            Authentic dohori music, luxury lounges, and immersive Nepali culture — crafted for unforgettable modern celebrations.
           </p>
         </header>
 
-        {/* Grid — items-stretch ensures equal card heights per row */}
-        <ul className="mt-16 grid gap-6 items-stretch sm:grid-cols-2 xl:grid-cols-4" role="list">
+        {/* SEO FIX: Using an unordered list role="list" for semantic screen-reader indexing */}
+        <ul 
+          className="mt-12 sm:mt-20 lg:mt-24 grid gap-5 sm:gap-6 lg:gap-8 items-stretch grid-cols-1 sm:grid-cols-2 xl:grid-cols-4" 
+          role="list"
+        >
           {services.map((service, i) => (
-            <li key={i} className="flex">
+            <li key={i} className="flex h-full">
               <ServiceCard {...service} />
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Keyframes */}
+      {/* Global Section Keyframes */}
       <style>{`
+        /* Registers custom CSS properties for the spinning border gradient */
         @property --card-angle {
           syntax: '<angle>';
           initial-value: 0deg;
@@ -192,9 +196,11 @@ export default function RodhiServices() {
             --btn-angle: 360deg;
           }
         }
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-16px); }
+        /* Sparkle animation: scales from 0 to 1 while rotating 45deg to create a diamond spark */
+        @keyframes sparkle {
+          0% { opacity: 0; transform: scale(0) rotate(0deg); }
+          50% { opacity: 1; transform: scale(1) rotate(45deg); }
+          100% { opacity: 0; transform: scale(0) rotate(90deg); }
         }
       `}</style>
     </section>
