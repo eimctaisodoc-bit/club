@@ -189,16 +189,32 @@ export default function Footer() {
           <FooterTitle title="Opening Hours" />
           <ul className="space-y-3 text-[14px] text-white/60" role="list">
             <li className="flex justify-between items-center border-b border-white/5 pb-2">
+              <span className="font-medium">Sunday</span>
+              <time dateTime="21:00-02:00">08:30 PM - 04:00 AM</time>
+            </li>
+            <li className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="font-medium">Monday</span>
-              <time dateTime="21:00-02:00">09:00 PM - 02:00 AM</time>
+              <time dateTime="21:00-03:00">08:30 PM - 04:00 AM</time>
+            </li>
+            <li className="flex justify-between items-center border-b border-white/5 pb-2">
+              <span className="font-medium">Tuesday</span>
+              <time dateTime="21:00-04:00">08:30 PM - 04:00 AM</time>
+            </li>
+            <li className="flex justify-between items-center border-b border-white/5 pb-2">
+              <span className="font-medium">Wednesday</span>
+              <time dateTime="21:00-04:00">08:30 PM - 04:00 AM</time>
+            </li>
+            <li className="flex justify-between items-center border-b border-white/5 pb-2">
+              <span className="font-medium">Thrusday</span>
+              <time dateTime="21:00-04:00">08:30 PM - 04:00 AM</time>
             </li>
             <li className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="font-medium">Friday</span>
-              <time dateTime="21:00-03:00">09:00 PM - 03:00 AM</time>
+              <time dateTime="21:00-04:00">08:30 PM - 04:00 AM</time>
             </li>
             <li className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="font-medium">Saturday</span>
-              <time dateTime="21:00-04:00">09:00 PM - 04:00 AM</time>
+              <time dateTime="21:00-04:00">08:30 PM - 04:00 AM</time>
             </li>
           </ul>
 

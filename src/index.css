@@ -26,6 +26,7 @@ body {
   background-color: #111f39;
   backdrop-filter: blur(8px);
   overflow-x: hidden;
+  /* display: flex; */
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -35,7 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =========================================
-   Premium Animated Border Button
+   Premium Animated Border` Button
 ========================================= */
 
 @keyframes spin {
