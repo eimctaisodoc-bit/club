@@ -16,7 +16,7 @@ function NepaliDatepicker({
   useEffect(() => {
     if (inputRef.current && !initializedRef.current) {
 
-      // Fetch today's Nepali Date to disable past and future dates
+      // Fetch today's Nepali Date to disable past dates
       let todayStr = "";
       if (window.NepaliFunctions) {
         const bsDate = window.NepaliFunctions.GetCurrentBsDate();
@@ -24,9 +24,8 @@ function NepaliDatepicker({
       }
 
       inputRef.current.NepaliDatePicker({
- 
         disableBefore: todayStr,
-        disableAfter: todayStr,
+        // Removed disableAfter so users can select future dates!
         ...options, 
         onSelect: (value) => {
           onSelect(value);
@@ -47,11 +46,9 @@ function NepaliDatepicker({
       id={id}
       type="text"
       placeholder={placeholder}
-
       autoComplete="off"
       // LUXURY THEME STYLING
       className={`w-full rounded-xl border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-[15px] text-white placeholder-white/40 backdrop-blur-md transition-all focus:border-[#c49d52] focus:bg-white/[0.05] focus:outline-none focus:ring-1 focus:ring-[#c49d52] ${className}`}
-
     />
   );
 }

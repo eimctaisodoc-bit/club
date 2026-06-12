@@ -1,204 +1,207 @@
-import { useState, useCallback, memo, useEffect } from "react";
-import { MessageSquare, MoveLeft, MoveRight, Quote, MapPin, Briefcase } from "lucide-react";
+import { useState, useCallback, memo } from "react";
+import { ChevronLeft, ChevronRight, Briefcase, MapPin, Calendar, Phone, Sparkles } from "lucide-react";
+import { artists } from "./artist";
 
-const content = [
-  { name: "Aarav Shrestha",    position: "VIP Member",        location: "Kathmandu, Nepal",  image: "https://i.pravatar.cc/96?img=11", review: "Amazing nightlife experience with energetic music, premium ambience and professional hospitality. The atmosphere at Durbar Rodhi Club feels luxurious and vibrant every night."              },
-  { name: "Sita Maharjan",     position: "Event Coordinator", location: "Lalitpur, Nepal",   image: "https://i.pravatar.cc/96?img=47", review: "The lighting, DJ performance and crowd management were outstanding. Perfect destination for enjoying premium nightlife with friends and colleagues."                                    },
-  { name: "Bikram Thapa",      position: "Regular Guest",     location: "Bhaktapur, Nepal",  image: "https://i.pravatar.cc/96?img=13", review: "Highly impressed by the club environment and VIP service. Music system, interior design and staff behavior were all top-class every single visit."                                     },
-  { name: "Priya Tamang",      position: "Brand Ambassador",  location: "Pokhara, Nepal",    image: "https://i.pravatar.cc/96?img=44", review: "Beautiful interior with stunning blue and golden vibes. The live performances and warm hospitality at Durbar Rodhi Club made every night unforgettable."                               },
-  { name: "Rohan Gurung",      position: "Club Photographer", location: "Kathmandu, Nepal",  image: "https://i.pravatar.cc/96?img=15", review: "Professional management, secure environment and excellent customer service. One of the best nightlife destinations I have experienced in Nepal."                                     },
-  { name: "Anisha Karki",      position: "Music Enthusiast",  location: "Chitwan, Nepal",    image: "https://i.pravatar.cc/96?img=49", review: "Elegant ambience with powerful sound system and premium seating arrangement. Durbar Rodhi Club is the perfect place for entertainment and celebration."                               },
-  { name: "Suraj Pandey",      position: "Event Organiser",   location: "Butwal, Nepal",     image: "https://i.pravatar.cc/96?img=17", review: "The VIP section experience was truly exceptional. Stylish setup, friendly staff and energetic atmosphere throughout every night I visited."                                          },
-  { name: "Nisha Rai",         position: "Loyal Guest",       location: "Biratnagar, Nepal", image: "https://i.pravatar.cc/96?img=45", review: "Music selection, crowd energy and luxury environment were beyond expectations. Durbar Rodhi Club delivers a truly premium nightlife experience."                                   },
-];
-
-const Avatar = memo(({ name, image }) => {
-  const initials = name.split(" ").map((w) => w[0]).join("").slice(0, 2);
-  return (
-    <div className="relative h-20 w-20 shrink-0">
-      {/* Animated Golden Border Ring */}
-      <div 
-        className="absolute -inset-1.5 rounded-full border-[3px] border-t-[#c49d52] border-r-[#c49d52]/60 border-b-[#c49d52]/10 border-l-[#c49d52]/60 animate-[spin_3s_linear_infinite] shadow-[0_0_15px_rgba(196,157,82,0.4)]" 
-        aria-hidden="true" 
-      />
-      
-      <div className="relative h-full w-full rounded-full bg-[#0a1128] z-10 overflow-hidden">
-        {image ? (
-          <img
-            src={image}
-            alt={name}
-            width="80"
-            height="80"
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full rounded-full object-cover border-2 border-transparent"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center rounded-full border-2 border-transparent bg-gradient-to-br from-[#0a1128] to-[#1e3a8a] text-2xl font-bold text-[#e8c97a]">
-            {initials}
-          </div>
-        )}
-      </div>
-      <div className="absolute inset-0 rounded-full shadow-[0_0_25px_rgba(196,157,82,0.3)] pointer-events-none z-20" aria-hidden="true" />
-    </div>
-  );
-});
-Avatar.displayName = "Avatar";
-
-const NavBtn = memo(({ onClick, label, children }) => (
+// Golden styled icon button
+const IconButton = memo(({ onClick, disabled, children, ariaLabel }) => (
   <button
     onClick={onClick}
-    aria-label={label}
-    className="group flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-[#c49d52]/40 bg-[#0a1128]/80 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#c49d52]/10 hover:border-[#c49d52] hover:shadow-[0_0_20px_rgba(196,157,82,0.35)] cursor-pointer"
+    disabled={disabled}
+    aria-label={ariaLabel}
+    className={`flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-300 backdrop-blur-md
+      ${disabled 
+        ? "border-white/10 text-white/30 cursor-not-allowed bg-white/5" 
+        : "border-[#FFD700]/40 text-[#FFD700] bg-[#FFD700]/10 hover:bg-[#FFD700]/20 hover:border-[#FFD700] hover:text-white hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] hover:scale-105 active:scale-95"
+      }`}
   >
     {children}
   </button>
 ));
-NavBtn.displayName = "NavBtn";
+IconButton.displayName = "IconButton";
 
-export default memo(function Testimonials() {
+export default function NavyGoldStaffTestimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [direction, setDirection] = useState("");
 
-  const activeItem = content[currentIndex];
+  const activeArtist = artists[currentIndex];
 
-  const paginate = useCallback((newDirection) => {
+  const handleNavigate = useCallback((direction) => {
     if (isAnimating) return;
-    setIsAnimating(true);
-    setDirection(newDirection > 0 ? "right" : "left");
     
-    // Allow the fade out animation to finish before swapping content
+    setIsAnimating(true);
     setTimeout(() => {
-      setCurrentIndex((prev) => (prev + newDirection + content.length) % content.length);
-      setDirection(""); // Reset direction to trigger fade in
-      
-      // Unlock pagination after fade in finishes
-      setTimeout(() => setIsAnimating(false), 300);
-    }, 300);
+      setCurrentIndex((prev) => {
+        if (direction === "next") return (prev + 1) % artists.length;
+        if (direction === "prev") return (prev - 1 + artists.length) % artists.length;
+        return prev;
+      });
+      setIsAnimating(false);
+    }, 300); 
   }, [isAnimating]);
 
-  const goPrev = useCallback(() => paginate(-1), [paginate]);
-  const goNext = useCallback(() => paginate(1),  [paginate]);
-
-  // Determine transition classes based on animation state
-  const getTransitionClass = () => {
-    if (direction === "right") return "opacity-0 -translate-x-12 scale-95";
-    if (direction === "left") return "opacity-0 translate-x-12 scale-95";
-    return "opacity-100 translate-x-0 scale-100";
-  };
-
   return (
-    <section 
-      className="relative w-full overflow-hidden py-20 lg:py-28 font-['DM_Sans'] text-white" 
-      aria-label="Client testimonials"
-      id="testimonials"
-    >
-      {/* ─── PREMIUM DARK CLUB GRADIENT BACKGROUND ─── */}
-      <div className="absolute inset-0 bg-[#02040a] bg-[radial-gradient(ellipse_at_bottom,_#1e3a8a_0%,_#0a1128_40%,_#02040a_100%)] pointer-events-none" aria-hidden="true" />
+    <section className="relative w-full bg-[#020A1A] py-12 md:py-20 px-4 sm:px-6 lg:px-8 font-sans flex justify-center items-center min-h-[100dvh] overflow-hidden text-white"
+    id="testi">
       
-      {/* Ambient Glows */}
-      <div className="absolute top-0 left-0 h-[500px] w-[500px] rounded-full bg-[#1e3a8a]/10 blur-[120px] pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#c49d52]/5 blur-[100px] pointer-events-none" aria-hidden="true" />
-
-      <div className="relative mx-auto w-full max-w-[1280px] px-4 sm:px-8 lg:px-12">
+      {/* --- DARK NAVY BACKGROUND EFFECTS --- */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {/* Deep space base layer */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-screen" />
         
-        {/* HEADER */}
-        <header className="mb-14 sm:mb-20 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 rounded-[2px] border border-[#c49d52]/50 px-3.5 py-1.5 backdrop-blur-sm bg-black/20 mb-6">
-            <span className="block h-1.5 w-1.5 rounded-full bg-[#c49d52]" aria-hidden="true" />
-            <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-[#c49d52]">
-              Client Testimonials
+        {/* Dark Blue glowing nebula - Bottom Left */}
+        <div className="absolute -bottom-[20%] -left-[10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-[#0B2046] blur-[100px] md:blur-[150px] opacity-80" />
+        
+        {/* Deep Navy glowing nebula - Top Right */}
+        <div className="absolute -top-[10%] -right-[10%] w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full bg-[#0A192F] blur-[80px] md:blur-[130px] opacity-90" />
+        
+        {/* Core Dark Blue - Center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[50vh] bg-[#001133] blur-[120px] opacity-70" />
+      </div>
+
+      <div className="relative w-full max-w-5xl z-10">
+        
+        {/* --- HEADER --- */}
+        <header className="mb-8 md:mb-16 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#FFD700]/40 px-4 py-1.5 bg-[#FFD700]/10 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(255,215,0,0.15)]">
+            <Sparkles size={14} className="text-[#FFD700]" />
+            <span className="text-[11px] font-semibold uppercase tracking-widest text-[#FFD700]">
+              Staff Testimonials
             </span>
           </div>
-
-          <h2 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-white tracking-[-0.01em] font-['Cormorant_Garamond']">
-            Voices of the <span className="text-[#e8c97a]">Night</span>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
+            Our Brilliant <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFEA70] via-[#FFD700] to-[#B8860B] drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">Office Staff</span>
           </h2>
           
-          <div className="mt-6 h-[2px] w-24 bg-gradient-to-r from-[#c49d52] to-transparent mx-auto sm:mx-0" aria-hidden="true" />
-          
-          <p className="mt-6 max-w-[500px] text-[15px] sm:text-[16px] leading-[1.75] text-white/60 mx-auto sm:mx-0">
-            Real experiences from our valued guests and partners at Durbar Rodhi Club, Kathmandu's premier nightlife destination.
+          <p className="mt-4 text-gray-300 max-w-2xl mx-auto font-light text-sm md:text-base px-4">
+            Discover the experiences, stories, and driving forces behind the extraordinary professionals who make our workplace stellar.
           </p>
         </header>
 
-        {/* TESTIMONIAL CARD & CONTROLS */}
-        <div>
-          {/* Card Container */}
-          <div className="relative min-h-[380px] sm:min-h-[320px] lg:min-h-[280px]">
-            <div 
-              className={`absolute top-0 left-0 w-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${getTransitionClass()}`}
-              role="region"
-              aria-label={`Testimonial ${currentIndex + 1} of ${content.length}`}
-              aria-live="polite"
-            >
-              <div className="relative overflow-hidden rounded-[4px] border border-[#c49d52]/20 bg-[#080C18]/60 p-6 sm:p-10 lg:p-12 backdrop-blur-xl shadow-[0_30px_60px_rgba(0,0,0,0.4)] group">
+        {/* --- MAIN INTERACTIVE AREA --- */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 relative w-full">
+          
+          {/* Desktop Left Handle */}
+          <div className="hidden md:block shrink-0">
+            <IconButton onClick={() => handleNavigate("prev")} ariaLabel="Previous staff member">
+              <ChevronLeft size={24} strokeWidth={2} />
+            </IconButton>
+          </div>
+
+          {/* Glowing Card Container */}
+          <div className="w-full max-w-[600px] bg-black/40 backdrop-blur-xl rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden relative flex flex-col justify-center min-h-[480px] md:min-h-[380px] group transition-all duration-500 hover:border-[#FFD700]/30 hover:shadow-[0_0_40px_rgba(255,215,0,0.1)]">
+            
+            {/* Inner dynamic card glow (Dark Blue to Navy) */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0B2046]/30 to-[#0A192F]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" aria-hidden="true" />
+            
+            {/* Animated Transition Wrapper */}
+            <div className={`w-full h-full p-6 sm:p-8 md:p-10 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${isAnimating ? "opacity-0 scale-95 blur-sm" : "opacity-100 scale-100 blur-0"}`}>
+              
+              {/* Mobile-first layout: Column default, Row on medium screens */}
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start h-full">
                 
-                {/* Decorative Elements */}
-                <div className="absolute inset-0 rounded-[4px] bg-gradient-to-br from-[#c49d52]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true" />
-                <div className="absolute right-6 top-6 sm:right-10 sm:top-10 opacity-[0.07] pointer-events-none" aria-hidden="true">
-                  <Quote size={80} className="text-[#c49d52]" />
+                {/* Image Section */}
+                <div className="shrink-0 relative">
+                  {/* Golden halo behind image */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#FFD700] to-[#B8860B] blur-md opacity-40 scale-105" aria-hidden="true" />
+                  
+                  <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border-2 border-[#FFD700]/30 bg-[#020A1A] shadow-inner z-10">
+                    <img 
+                      src={activeArtist.img} 
+                      alt={activeArtist.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
 
-                <div className="flex flex-col gap-8 relative z-10">
-                  {/* User row */}
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 text-center sm:text-left">
-                    <Avatar name={activeItem.name} image={activeItem.image} />
+                {/* Info Section */}
+                <div className="flex-1 w-full flex flex-col text-center md:text-left">
+                  
+                  {/* Name & Title */}
+                  <div className="mb-6 pb-6 relative">
+                    {/* Golden divider line */}
+                    <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent md:from-[#FFD700]/50 via-[#B8860B]/50 to-transparent" />
                     
-                    <div className="flex flex-col gap-1.5 mt-1 sm:mt-2">
-                      <h3 className="font-['Cormorant_Garamond'] text-2xl sm:text-[28px] font-bold text-white leading-none">
-                        {activeItem.name}
-                      </h3>
-                      
-                      <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-[12px] sm:text-[13px]">
-                        <span className="flex items-center gap-1.5 font-medium text-[#c49d52] uppercase tracking-[0.05em]">
-                          <Briefcase size={14} aria-hidden="true" />
-                          {activeItem.position}
-                        </span>
-                        <span className="text-white/30" aria-hidden="true">|</span>
-                        <span className="flex items-center gap-1.5 text-white/50">
-                          <MapPin size={14} aria-hidden="true" className="text-[#c49d52]/60" />
-                          {activeItem.location}
-                        </span>
-                      </div>
-                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#FFEA70] tracking-wide mb-3 drop-shadow-md">
+                      {activeArtist.name}
+                    </h3>
+                    
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FFD700]/10 border border-[#FFD700]/30 text-[#FFD700] text-xs font-semibold uppercase tracking-widest shadow-[0_0_10px_rgba(255,215,0,0.1)]">
+                      <Briefcase size={12} strokeWidth={2.5} />
+                      {activeArtist.position}
+                    </span>
                   </div>
 
-                  <div className="h-px w-full bg-[#c49d52]/15" aria-hidden="true" />
+                  {/* Details Grid (Mobile: 1 col, SM: 2 col) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-gray-300 w-full">
+                    
+                    <div className="flex items-center justify-start gap-3 w-full group/item">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 border border-white/10 group-hover/item:border-[#FFD700]/50 group-hover/item:shadow-[0_0_10px_rgba(255,215,0,0.2)] transition-all">
+                        <MapPin size={16} className="text-[#FFD700]" />
+                      </div>
+                      <span className="text-sm font-light truncate">{activeArtist.address}</span>
+                    </div>
+                    
+                    <div className="flex items-center justify-start gap-3 w-full group/item">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 border border-white/10 group-hover/item:border-[#FFD700]/50 group-hover/item:shadow-[0_0_10px_rgba(255,215,0,0.2)] transition-all">
+                        <Calendar size={16} className="text-[#FFD700]" />
+                      </div>
+                      <span className="text-sm font-light truncate">{activeArtist.dob}</span>
+                    </div>
 
-                  {/* Review Text */}
-                  <blockquote>
-                    <p className="max-w-4xl font-['Cormorant_Garamond'] text-xl sm:text-2xl leading-relaxed text-white/80 italic">
-                      "{activeItem.review}"
-                    </p>
-                  </blockquote>
+                    <div className="flex items-center justify-start gap-3 w-full group/item">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 border border-white/10 group-hover/item:border-[#FFD700]/50 group-hover/item:shadow-[0_0_10px_rgba(255,215,0,0.2)] transition-all">
+                        <Phone size={16} className="text-[#FFD700]" />
+                      </div>
+                      <span className="text-sm font-light tracking-wide truncate">{activeArtist.contact}</span>
+                    </div>
+                    
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
 
-          {/* Navigation Controls */}
-          <div className="mt-20 flex items-center justify-center sm:justify-start gap-4">
-            <NavBtn onClick={goPrev} label="Previous testimonial">
-              <MoveLeft size={18} className="text-[#c49d52] transition-transform duration-300 group-hover:-translate-x-1" aria-hidden="true" />
-            </NavBtn>
-            
-            <div
-              className="rounded-[3px] border border-[#c49d52]/30 bg-black/40 px-5 py-2 sm:py-2.5 text-[12px] sm:text-[13px] font-medium tracking-[0.15em] text-[#c49d52] backdrop-blur-md"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              {String(currentIndex + 1).padStart(2, '0')} / {String(content.length).padStart(2, '0')}
-            </div>
-            
-            <NavBtn onClick={goNext} label="Next testimonial">
-              <MoveRight size={18} className="text-[#c49d52] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-            </NavBtn>
+          {/* Desktop Right Handle */}
+          <div className="hidden md:block shrink-0">
+            <IconButton onClick={() => handleNavigate("next")} ariaLabel="Next staff member">
+              <ChevronRight size={24} strokeWidth={2} />
+            </IconButton>
           </div>
+
+        </div>
+
+        {/* --- MOBILE CONTROLS & PAGINATION --- */}
+        <div className="mt-8 flex items-center justify-between md:justify-center px-2 w-full max-w-[600px] mx-auto relative z-20">
+          
+          <div className="md:hidden">
+            <IconButton onClick={() => handleNavigate("prev")} ariaLabel="Previous">
+              <ChevronLeft size={20} />
+            </IconButton>
+          </div>
+          
+          {/* Glowing Pagination Indicator */}
+          <div className="flex items-center justify-center md:mx-6 bg-[#020A1A]/60 backdrop-blur-md px-5 py-2.5 rounded-full border border-[#FFD700]/20 shadow-[inset_0_0_15px_rgba(255,215,0,0.05)]">
+            <span className="text-sm font-bold tracking-widest text-[#FFD700] drop-shadow-[0_0_5px_rgba(255,215,0,0.8)]">
+              {String(currentIndex + 1).padStart(2, '0')}
+            </span>
+            <span className="text-gray-500 mx-2 text-sm">/</span>
+            <span className="text-sm font-medium tracking-widest text-gray-400">
+              {String(artists.length).padStart(2, '0')}
+            </span>
+          </div>
+          
+          <div className="md:hidden">
+            <IconButton onClick={() => handleNavigate("next")} ariaLabel="Next">
+              <ChevronRight size={20} />
+            </IconButton>
+          </div>
+          
         </div>
 
       </div>
     </section>
   );
-});
+}

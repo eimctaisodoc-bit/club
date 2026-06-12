@@ -248,20 +248,20 @@ const Home_ = () => {
 
                 {/* RESPONSIVE FIX: Full-width stacked buttons on mobile, inline on sm+ */}
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                  <Link
-                    to="/book-now"
+                  <a
+                    href="/book-now"
                     className="inline-flex w-full sm:w-auto justify-center cursor-pointer items-center gap-2.5 rounded-[3px] bg-[#c49d52] px-7 py-3.5 md:py-4 font-['DM_Sans'] text-[13px] font-bold uppercase tracking-[0.12em] text-[#0a0e1a] transition-all duration-300 hover:bg-[#ddb86a]"
                   >
                     Join Our Family
                     <ArrowUpRight size={16} aria-hidden="true" />
-                  </Link>
+                  </a>
 
-                  <Link
-                    to="/events"
+                  <a
+                    href="/events"
                     className="inline-flex w-full sm:w-auto justify-center cursor-pointer items-center gap-2 rounded-[3px] border border-white/20 bg-transparent px-6 py-3.5 md:py-4 font-['DM_Sans'] text-[13px] font-medium uppercase tracking-[0.08em] text-white/65 transition-all duration-300 hover:border-white/45 hover:text-white"
                   >
                     View Events
-                  </Link>
+                  </a>
                 </div>
 
                 {/* Counter */}

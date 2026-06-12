@@ -6,11 +6,11 @@ import { AnimatedBorder } from "./animatedBorder";
 
 const NAV_ITEMS = [
   { name: "Home", path: "/", icon: Home, id: "home" },
-  { name: "Service", path: "/services", icon: Sparkles, id: "services" },
-  { name: "Gallery", path: "/gallery", icon: Image, id: "gallery" },
-  { name: "Menu", path: "/menu", icon: CalendarDays, id: "menu" },
-  { name: "Testimonials", path: "/testimonials", icon: CalendarDays, id: "testimonials" },
-  { name: "Contact Us", path: "/contact", icon: Phone, id: "contact" },
+  { name: "Service", path: "#services", icon: Sparkles, id: "services" },
+  { name: "Gallery", path: "#gallery", icon: Image, id: "gallery" },
+  { name: "Menu", path: "#menu", icon: CalendarDays, id: "menu" },
+  { name: "Testimonials", path: "#testi", icon: CalendarDays, id: "testi" },
+  { name: "Contact Us", path: "#contact", icon: Phone, id: "contact" },
 ];
 
 // ─── Memoized nav link ────────────────────────────────────────────────────────
@@ -90,6 +90,25 @@ const NavBar = () => {
   );
 
   // ─── BODY SCROLL LOCK WHEN DRAWER IS OPEN ─────────────────────────────────
+
+  if (openDrawer) {
+    window.scrollTo(0, 0);
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // console.log("Scroll Y Position:", window.scrollY);
+    };
+
+    // Attach the listener when the component loads
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean it up when the component unmounts to prevent memory leaks
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     if (openDrawer) {
       // Save current scroll position
@@ -181,14 +200,16 @@ const NavBar = () => {
           </div>
 
           {/* RIGHT SECTION */}
-          <div className="flex min-w-0 items-center gap-4">
-            <Link to="/book-now" className="shrink-0">
-              <AnimatedBorder>
-                <span className="font-['DM_Sans'] text-[12px] uppercase tracking-[0.15em] font-bold text-white transition-colors hover:text-[#e8c97a]">
-                  Book Now
-                </span>
-              </AnimatedBorder>
-            </Link>
+          <div className="flex min-w-0 items-center gap-4"
+        
+             onClick={() => window.scrollTo({ top: document.getElementById("event").offsetTop, behavior: "smooth" })}
+          >
+
+            <AnimatedBorder>
+              <span className="font-['DM_Sans'] text-[12px] uppercase tracking-[0.15em] font-bold text-white transition-colors hover:text-[#e8c97a]">
+                Book Now
+              </span>
+            </AnimatedBorder>
 
             <button
               type="button"
@@ -206,9 +227,8 @@ const NavBar = () => {
 
       {/* ── MOBILE DRAWER ────────────────────────────────────────── */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
-          openDrawer ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${openDrawer ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+          }`}
         aria-hidden={!openDrawer}
       >
         {/* BACKDROP */}
@@ -220,9 +240,8 @@ const NavBar = () => {
 
         {/* SIDEBAR PANEL */}
         <div
-          className={`absolute right-0 top-0 flex h-full w-[280px] sm:w-[320px] flex-col bg-[#0a1128] shadow-2xl transition-transform duration-300 ease-in-out border-l border-[#c49d52]/20 ${
-            openDrawer ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute right-0 top-0 flex h-full w-[280px] sm:w-[320px] flex-col bg-[#0a1128] shadow-2xl transition-transform duration-300 ease-in-out border-l border-[#c49d52]/20 ${openDrawer ? "translate-x-0" : "translate-x-full"
+            }`}
           id="mobile-drawer"
           role="dialog"
           aria-modal="true"

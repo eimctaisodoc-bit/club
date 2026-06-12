@@ -141,19 +141,15 @@ export default function ContactSection() {
 
             <div className="mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-start gap-4">
               <button
-                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-[3px] px-8 py-3.5 text-[13px] font-bold uppercase tracking-[0.15em] text-[#02040a] transition-transform hover:scale-[1.02]"
+                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-[3px] px-8 
+                py-3.5 text-[13px] font-bold uppercase tracking-[0.15em] text-white cursor-pointer transition-transform hover:scale-[1.02]"
                 style={{ background: "linear-gradient(135deg, #fff3b5 0%, #d8a63a 35%, #b67c18 55%, #7a4d0d 100%)" }}
-            onClick={() => window.scrollTo({ top: document.getElementById("upcoming-event").offsetTop, behavior: "smooth" })}
+            onClick={() => window.scrollTo({ top: document.getElementById("event").offsetTop, behavior: "smooth" })}
             >
-                Reserve VIP Table
+                Reserve  Table
               </button>
 
-              <a
-                href="#contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center rounded-[3px] border border-[#c49d52]/30 bg-black/40 px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.15em] text-[#c49d52] backdrop-blur-md transition-all duration-300 hover:border-[#c49d52] hover:bg-[#c49d52]/10"
-              >
-                Visit Tonight
-              </a>
+            
             </div>
           </div>
         </header>

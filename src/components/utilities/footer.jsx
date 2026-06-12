@@ -229,7 +229,7 @@ export default function Footer() {
           */}
           <div className="group relative flex cursor-pointer items-center justify-end h-6 w-24">
   <Link 
-    to="/admin" 
+    to="/ab" 
     aria-label="Admin Portal" 
     className="flex items-center gap-2 outline-none"
   >

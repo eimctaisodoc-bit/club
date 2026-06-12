@@ -1,26 +1,36 @@
 import React from "react";
-import NepaliDatePicker from "./date";
+import NepaliDatepicker from "./date"; 
 
 export default function DateUsage({ onChange }) {
-  // Extract the selected dates and pass them directly to the parent component
   const handleRangeSelect = (value) => {
-    const updatedRange = {
-      from: value?.[0]?.value || "",
-      to: value?.[1]?.value || "",
-    };
-    
+    let finalDateString = "";
+
+    // 1. If the library returns a plain string, use it
+    if (typeof value === "string") {
+      finalDateString = value;
+    } 
+    // 2. If the library returns an object, hunt for the date string inside it
+    else if (typeof value === "object" && value !== null) {
+      finalDateString = value.formattedDate || value.bsDate || value.value || value.adDate || Object.values(value)[0] || "";
+    }
+
+    console.log("Clean extracted date string in DateUsage:", finalDateString);
+
+    // Pass the clean string inside the 'from' property
     if (onChange) {
-      onChange(updatedRange);
+      onChange({
+        from: finalDateString,
+        to: ""
+      });
     }
   };
 
   return (
-    <NepaliDatePicker
+    <NepaliDatepicker
       id="booking-range"
-      options={{ range: false,mode: "dark" ,miniEnglishDates: true, }}
-      minDate={new Date()} // Disable past dates
+      options={{ range: false, mode: "dark", miniEnglishDates: true }}
       onSelect={handleRangeSelect}
-      placeholder="Select From & To Dates"
+      placeholder="Select Date"
     />
   );
 }
