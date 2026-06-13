@@ -3,14 +3,29 @@ import { RotatingTriangle } from "./triangle";
 
 // ─── PERFORMANCE FIX 1: Static data outside component ────────────────────────
 const TABS = ["All", "Music", "Dance"];
+const imageMap = import.meta.glob(
+  "../../assets/gallery/*.{jpg,jpg,webp,png}",
+  { eager: true, import: "default" }
+);
 
+const img = (name) => imageMap[`../../assets/gallery/${name}`] ?? "";
 const galleryItems = [
-  { id: 1, title: "Live Concert",    category: "Music", height: "h-[220px] sm:h-[260px]", image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800?auto=format&fit=crop&w=800&q=80&fm=webp" },
-  { id: 2, title: "Dance Show",      category: "Dance", height: "h-[280px] sm:h-[340px]", image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80&fm=webp" },
-  { id: 3, title: "DJ Night",        category: "Music", height: "h-[240px] sm:h-[300px]", image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80&fm=webp" },
-  { id: 4, title: "Street Dance",    category: "Dance", height: "h-[300px] sm:h-[380px]", image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=800&q=80&fm=webp" },
-  { id: 5, title: "Guitar Session",  category: "Music", height: "h-[250px] sm:h-[310px]", image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80&fm=webp" },
-  { id: 6, title: "Cultural Dance",  category: "Dance", height: "h-[230px] sm:h-[270px]", image: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=800&q=80&fm=webp" },
+
+  { id: 1,  title: "Music Show", category: "Music", height: "h-[220px] sm:h-[260px]", image: img('1.jpg') },
+  { id: 2,  title: "Music Show", category: "Music", height: "h-[280px] sm:h-[340px]", image: img('2.jpg') },
+  { id: 3,  title: "Dance Show", category: "Dance", height: "h-[240px] sm:h-[300px]", image: img('3.jpg') },
+  { id: 4,  title: "Dance Show", category: "Dance", height: "h-[300px] sm:h-[380px]", image: img('4.jpg') },
+  { id: 5,  title: "Dance Show", category: "Dance", height: "h-[250px] sm:h-[310px]", image: img('5.jpg') },
+  { id: 6,  title: "Dance Show", category: "Dance", height: "h-[230px] sm:h-[270px]", image: img('6.jpg') },
+  { id: 55, title: "Music Show", category: "Music", height: "h-[260px] sm:h-[320px]", image: img('55.jpg') },
+  { id: 7,  title: "Dance Show", category: "Dance", height: "h-[260px] sm:h-[320px]", image: img('7.jpg') },
+  { id: 8,  title: "Dance Show", category: "Dance", height: "h-[280px] sm:h-[350px]", image: img('8.jpg') },
+  { id: 9,  title: "Dance Show", category: "Dance", height: "h-[240px] sm:h-[290px]", image: img('9.jpg') },
+  { id: 10, title: "Dance Show", category: "Dance", height: "h-[300px] sm:h-[360px]", image: img('10.jpg') },
+  { id: 11, title: "Music Show", category: "Music", height: "h-[230px] sm:h-[280px]", image: img('111.jpg') },
+  { id: 22, title: "Music Show", category: "Music", height: "h-[270px] sm:h-[330px]", image: img('22.jpg') },
+  { id: 33, title: "Music Show", category: "Music", height: "h-[250px] sm:h-[300px]", image: img('33.jpg') },
+  { id: 44, title: "Music Show", category: "Music", height: "h-[310px] sm:h-[380px]", image: img('44.jpg') },
 ];
 
 const preloadFirstImages = () => {
@@ -80,7 +95,9 @@ const GalleryCard = memo(({ item, index, priority }) => {
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         fetchPriority={priority ? "high" : "auto"}
-        className={`w-full ${item.height} object-cover brightness-[0.85] saturate-[0.9] transition-all duration-700 lg:group-hover:scale-[1.07] lg:group-hover:brightness-[0.45] lg:group-hover:saturate-75`}
+        className={`w-full 
+           object-cover brightness-[0.85] saturate-[0.9] transition-all duration-700 lg:group-hover:scale-[1.09] 
+          lg:group-hover:brightness-[0.45] lg:group-hover:saturate-75 scale-[1.07] `}
       />
 
       <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(8,12,24,0.95)_0%,rgba(8,12,24,0.3)_50%,transparent_100%)] lg:bg-[linear-gradient(to_top,rgba(8,12,24,0.95)_0%,rgba(8,12,24,0.6)_60%,transparent_100%)] lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end px-4 py-4 sm:px-6 sm:py-6">

@@ -10,6 +10,14 @@ import {
   ArrowUpRight
 } from "lucide-react";
 
+const TABS = ["All", "Music", "Dance"];
+const imageMap = import.meta.glob(
+  "../../assets/team/*.{jpg,jpg,webp,png}",
+  { eager: true, import: "default" }
+);
+
+const img = (name) => imageMap[`../../assets/team/${name}`] ?? "";
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const attractions = [
   {
@@ -30,10 +38,10 @@ const attractions = [
 ];
 
 const team = [
-  { role: "Founder", name: "Ashok", image: "https://i.pravatar.cc/150?img=11" },
-  { role: "CEO", name: "Dipak Khadka", image: "https://i.pravatar.cc/150?img=14" },
-  { role: "Managing Director", name: "Bikash Thapa", image: "https://i.pravatar.cc/150?img=13" },
-  { role: "Manager", name: "Rajan Giri", image: "https://i.pravatar.cc/150?img=15" },
+  { role: "Founder", name: "Ashok", image: img("Ashok giri.jpg")},
+  { role: "CEO", name: "Dipak Khadka", image: img("CEO.jpg")},
+  { role: "Managing Director", name: "Bikash Thapa", image:  img("Founder.jpg") },
+  { role: "Manager", name: "Rajan Giri", image: img("Rajan giri.jpg") },
 ];
 
 const hours = [

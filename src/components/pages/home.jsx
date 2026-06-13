@@ -12,12 +12,12 @@ const imageMap = import.meta.glob(
 const img = (name) => imageMap[`../../assets/${name}`] ?? "";
 
 const slides = [
-  { image: img("1.jpg"), tag: "Welcome",            title: "Top Durbar\nRodhi Club",      desc: "Keep Our Traditional Alive Through Music And Unity",       detail: "Experience comfort, elegance, and tradition in the heart of our community.", name: "Randi Dancer",  music: "Traditional Dohori" },
-  { image: img("2.jpg"), tag: "Live Performance",  title: "Feel The Real\nNepali Vibes",  desc: "Celebrate Music, Culture And Entertainment",               detail: "Traditional Rodhi experience blended with modern nightlife energy.",         name: "Sarina Artist", music: "Folk Remix"         },
-  { image: img("3.jpg"), tag: "Traditional Nights",title: "Music That\nConnects Hearts",  desc: "Feel Unity Through Dance And Melody",                      detail: "A premium Rodhi club experience full of energy and culture.",              name: "Nepali Queen",  music: "Club Dohori"        },
-  { image: img("4.jpg"), tag: "Celebration",       title: "Tradition\nMeets Luxury",      desc: "Experience Music Beyond Imagination",                      detail: "Dance, celebrate and enjoy premium hospitality every night.",              name: "Club Dancer",   music: "Modern Folk"        },
-  { image: img("5.jpg"), tag: "Exclusive Events",  title: "Where Culture\nComes Alive",    desc: "Traditional Music With Club Experience",                   detail: "Elegant atmosphere with live entertainment every single night.",           name: "Rodhi Star",    music: "Live Performance"   },
-  { image: img("6.jpg"), tag: "Heritage",          title: "Feel Music\nLike Never Before", desc: "Celebrate Every Night With Energy",                        detail: "Traditional community spirit elevated with modern luxury.",                name: "Night Queen",   music: "DJ Folk Mix"        },
+  { image: img("9.jpg"), tag: "Welcome",            title: "Top Durbar\nRodhi Club",      desc: "Keep Our Traditional Alive Through Music And Unity",       detail: "Experience comfort, elegance, and tradition in the heart of our community.", name: "",  music: "Traditional Dohori" },
+  { image: img("7.jpg"), tag: "Live Performance",  title: "Feel The Real\nNepali Vibes",  desc: "Celebrate Music, Culture And Entertainment",               detail: "Traditional Rodhi experience blended with modern nightlife energy.",         name: "", music: "Folk Remix"         },
+  { image: img("8.jpg"), tag: "Traditional Nights",title: "Music That\nConnects Hearts",  desc: "Feel Unity Through Dance And Melody",                      detail: "A premium Rodhi club experience full of energy and culture.",              name: "",  music: "Club Dohori"        },
+  { image: img("10.jpg"), tag: "Celebration",       title: "Tradition\nMeets Luxury",      desc: "Experience Music Beyond Imagination",                      detail: "Dance, celebrate and enjoy premium hospitality every night.",              name: "",   music: "Modern Folk"        },
+  { image: img("11.jpg"), tag: "Exclusive Events",  title: "Where Culture\nComes Alive",    desc: "Traditional Music With Club Experience",                   detail: "Elegant atmosphere with live entertainment every single night.",           name: "",    music: "Folk Remix"   },
+  { image: img("12.jpg"), tag: "Heritage",          title: "Feel Music\nLike Never Before", desc: "Celebrate Every Night With Energy",                        detail: "Traditional community spirit elevated with modern luxury.",                name: "",   music: "Traditional Dohori"        },
 ];
 
 const pad = (n) => String(n + 1).padStart(2, "0");

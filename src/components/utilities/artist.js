@@ -1,6 +1,6 @@
 // import balika from '../../assets/staffs/'
 const imageMap = import.meta.glob(
-  "../../assets/staffs/*.{jpg,jpeg,webp,png}",
+  "../../assets/staffs/*.{jpg,jpg,webp,png}",
   { eager: true, import: "default" }
 );
 
@@ -13,7 +13,7 @@ export const artists = [
     address: "Chitwan",
     dob: "2054-02-23",
     contact: "9865247743",
-    img: img("BALIKA TAMANG.jpeg")
+    img: img("BALIKA TAMANG.jpg")
   },
   {
     name: "HUM BAHADUR BHANDARI",
@@ -21,7 +21,7 @@ export const artists = [
     address: "Kapilvastu",
     dob: "2052-01-13",
     contact: "9867525045",
-    img: img("HUM BAHADUR BHANDARI.jpeg")
+    img: img("HUM BAHADUR BHANDARI.jpg")
   },
   {
     name: "ELECTION SUNAR",
@@ -29,7 +29,7 @@ export const artists = [
     address: "Dhading",
     dob: "2048-10-16",
     contact: "9849212075",
-    img: img("ELECTION SUNAR.jpeg")
+    img: img("ELECTION SUNAR.jpg")
   },
   {
     name: "GOBINDA PARIYAR",
@@ -37,7 +37,7 @@ export const artists = [
     address: "Rolpa",
     dob: "2052-09-29",
     contact: "9863354958",
-    img: img("GOBINDA PARIYAR.jpeg")
+    img: img("GOBINDA PARIYAR.jpg")
   },
   {
     name: "SUDIP SINJALI",
@@ -45,7 +45,7 @@ export const artists = [
     address: "Gulmi",
     dob: "2055-06-17",
     contact: "9769774610",
-    img: img("SUDIP SINJALI.jpeg")
+    img: img("SUDIP SINJALI.jpg")
   },
   {
     name: "BABIN SING THAKURI",
@@ -53,7 +53,7 @@ export const artists = [
     address: "",
     dob: "2053-11-15",
     contact: "9803409099",
-    img: img("BABIN SING THAKURI.jpeg")
+    img: img("BABIN SING THAKURI.jpg")
   },
   {
     name: "RABIN PARIYAR",
@@ -61,7 +61,7 @@ export const artists = [
     address: "Kapilvastu",
     dob: "2049-05-17",
     contact: "9867300674",
-    img: img("RABIN PARIYAR.jpeg")
+    img: img("RABIN PARIYAR.jpg")
   },
   {
     name: "REKHA STRI",
@@ -69,7 +69,7 @@ export const artists = [
     address: "",
     dob: "2059-07-12",
     contact: "9813983239",
-    img: img("REKHA STRI.jpeg")
+    img: img("REKHA STRI.jpg")
   },
   {
     name: "BANDANA PARIYAR",
@@ -77,7 +77,7 @@ export const artists = [
     address: "Chitwan",
     dob: "2056-03-16",
     contact: "9821139587",
-    img: img("BANDANA PARIYAR.jpeg")
+    img: img("BANDANA PARIYAR.jpg")
   },
   {
     name: "NIRMALA PAKHRIN",
@@ -85,7 +85,7 @@ export const artists = [
     address: "Sarlai",
     dob: "2057/02/31",
     contact: "9849097394",
-    img: img("NIRMALA PAKHRIN.jpeg")
+    img: img("NIRMALA PAKHRIN.jpg")
   },
   {
     name: "DHAN KUMARI GHARTI",
@@ -93,7 +93,7 @@ export const artists = [
     address: "Rukum",
     dob: "2062-08-29",
     contact: "9764362187",
-    img: img("DHAN KUMARI GHARTI.jpeg")
+    img: img("DHAN KUMARI GHARTI.jpg")
   },
   {
     name: "SAMJHANA HARMEL",
@@ -101,7 +101,7 @@ export const artists = [
     address: "Baglung",
     dob: "2063-06-10",
     contact: "9748807879",
-    img: img("SAMJHANA HARMEL.jpeg")
+    img: img("SAMJHANA HARMEL.jpg")
   },
   {
     name: "SANGINA MAGAR",
@@ -109,7 +109,7 @@ export const artists = [
     address: "Dhading",
     dob: "2050-06-16",
     contact: "9841859395",
-    img: img("SANGINA MAGAR.jpeg")
+    img: img("SANGINA MAGAR.jpg")
   },
   {
     name: "SURESH MAGAR",
@@ -117,7 +117,7 @@ export const artists = [
     address: "Pyuthan",
     dob: "2051-06-16",
     contact: "9868611939",
-    img: img("SURESH MAGAR.jpeg")
+    img: img("SURESH MAGAR.jpg")
   },
   {
     name: "KABITA ARYAL",
@@ -125,7 +125,7 @@ export const artists = [
     address: "Dhading",
     dob: "2056-01-03",
     contact: "9769352378",
-    img: img("KABITA ARYAL.jpeg")
+    img: img("KABITA ARYAL.jpg")
   },
   {
     name: "AARADHYA AAGRI",
@@ -133,7 +133,7 @@ export const artists = [
     address: "Rolpa",
     dob: "2058-11-01",
     contact: "9849448756",
-    img: img("AARADHYA AAGRI.jpeg")
+    img: img("AARADHYA AAGRI.jpg")
   },
   {
     name: "GITA SENCHURI",
@@ -141,7 +141,7 @@ export const artists = [
     address: "Dhading",
     dob: "2049-07-10",
     contact: "9851158782",
-    img: img("GITA SENCHURI.jpeg")
+    img: img("GITA SENCHURI.jpg")
   },
   {
     name: "SAMBHU SHRESTHA",
@@ -149,7 +149,7 @@ export const artists = [
     address: "Ramechhap",
     dob: "2051-04-27",
     contact: "9843303130",
-    img: img("SAMBHU SHRESTHA.jpeg")
+    img: img("SAMBHU SHRESTHA.jpg")
   },
   {
     name: "LOK KUMARI GIRI",
@@ -157,7 +157,7 @@ export const artists = [
     address: "Udayapur",
     dob: "2048-06-11",
     contact: "9860739706",
-    img: img("LOK KUMARI GIRI.jpeg")
+    img: img("LOK KUMARI GIRI.jpg")
   },
   {
     name: "RAJU RD",
@@ -165,7 +165,7 @@ export const artists = [
     address: "Lamjung",
     dob: "2052-04-28",
     contact: "9806664054",
-    img: img("RAJU RD.jpeg")
+    img: img("RAJU RD.jpg")
   },
   {
     name: "SHREESHA PARIYAR",
@@ -173,7 +173,7 @@ export const artists = [
     address: "Dang",
     dob: "2063-07-29",
     contact: "9703421988",
-    img: img("SHREESHA PARIYAR.jpeg")
+    img: img("SHREESHA PARIYAR.jpg")
   },
   {
     name: "ASHISH PARIYAR",
@@ -181,7 +181,7 @@ export const artists = [
     address: "Baglung",
     dob: "2003-07-27",
     contact: "9860602764",
-    img: img("ASHISH PARIYAR.jpeg")
+    img: img("ASHISH PARIYAR.jpg")
   },
   {
     name: "BIRENDRA SING",
@@ -189,7 +189,7 @@ export const artists = [
     address: "",
     dob: "2053-11-15",
     contact: "9803409699",
-    img: img("BIRENDRA SING.jpeg")
+    img: img("BIRENDRA SING.jpg")
   },
   {
     name: "PRATIMA OLI",
@@ -197,7 +197,7 @@ export const artists = [
     address: "Dang",
     dob: "2056-09-05",
     contact: "9810855054",
-    img: img("PRATIMA OLI.jpeg")
+    img: img("PRATIMA OLI.jpg")
   },
   {
     name: "ALIJA MAGAR",
@@ -205,7 +205,7 @@ export const artists = [
     address: "Kavre",
     dob: "2059-06-12",
     contact: "9838147181",
-    img: img("ALIJA MAGAR.jpeg")
+    img: img("ALIJA MAGAR.jpg")
   },
   {
     name: "URMILA SHAHI",
@@ -213,7 +213,7 @@ export const artists = [
     address: "Dailekh",
     dob: "2057-09-21",
     contact: "9767289350",
-    img: img("URMILA SHAHI.jpeg")
+    img: img("URMILA SHAHI.jpg")
   },
   {
     name: "KHUSBU SUNAR",
@@ -221,7 +221,7 @@ export const artists = [
     address: "Syangja",
     dob: "2053-06-24",
     contact: "9851338273",
-    img: img("KHUSBU SUNAR.jpeg")
+    img: img("KHUSBU SUNAR.jpg")
   },
   {
     name: "MAN BAHADUR RAWAT",
@@ -229,7 +229,7 @@ export const artists = [
     address: "Banke",
     dob: "2048-12-01",
     contact: "9843564434",
-    img: img("MAN BAHADUR RAWAT.jpeg")
+    img: img("MAN BAHADUR RAWAT.jpg")
   },
   {
     name: "MANIKALA PUN MAGAR",
@@ -237,7 +237,7 @@ export const artists = [
     address: "Pyuthan",
     dob: "2050-05-12",
     contact: "9860657071",
-    img: img("MANIKALA PUN MAGAR.jpeg")
+    img: img("MANIKALA PUN MAGAR.jpg")
   },
   {
     name: "GHANASHYAM KUNWAR",
@@ -245,7 +245,7 @@ export const artists = [
     address: "Gulmi",
     dob: "2052-06-28",
     contact: "984673921",
-    img: img("GHANASHYAM KUNWAR.jpeg")
+    img: img("GHANASHYAM KUNWAR.jpg")
   },
   {
     name: "SABITA PARIYAR",
@@ -253,7 +253,7 @@ export const artists = [
     address: "Tanahu",
     dob: "1991-02-15",
     contact: "9843728945",
-    img: img("SABITA PARIYAR.jpeg")
+    img: img("SABITA PARIYAR.jpg")
   },
   {
     name: "ASHRAM GURUNG",
@@ -261,7 +261,7 @@ export const artists = [
     address: "Lamjung",
     dob: "1985-07-01",
     contact: "9849060755",
-    img: img("ASHRAM GURUNG.jpeg")
+    img: img("ASHRAM GURUNG.jpg")
   },
   {
     name: "DINESH CHHETRI",
@@ -269,7 +269,7 @@ export const artists = [
     address: "Syangja",
     dob: "1989-01-09",
     contact: "9849069355",
-    img: img("DINESH CHHETRI.jpeg")
+    img: img("DINESH CHHETRI.jpg")
   },
   {
     name: "SHANTI THAPA PUN",
@@ -277,7 +277,7 @@ export const artists = [
     address: "Pokhara",
     dob: "2050-12-08",
     contact: "9824322606",
-    img: img("SHANTI THAPA PUN.jpeg")
+    img: img("SHANTI THAPA PUN.jpg")
   },
   {
     name: "KAMAL BISTA",
@@ -285,7 +285,7 @@ export const artists = [
     address: "Kailali",
     dob: "2050-03-13",
     contact: "9761855668",
-    img: img("KAMAL BISTA.jpeg")
+    img: img("KAMAL BISTA.jpg")
   },
   {
     name: "NISHA LAMA",
@@ -293,7 +293,7 @@ export const artists = [
     address: "Dolakha",
     dob: "2048-09-03",
     contact: "9803103650",
-    img: img("NISHA LAMA.jpeg")
+    img: img("NISHA LAMA.jpg")
   },
   {
     name: "SHANKAR SUNAR",
@@ -301,7 +301,7 @@ export const artists = [
     address: "Syangja",
     dob: "2054-03-03",
     contact: "9844594385",
-    img: img("SHANKAR SUNAR.jpeg")
+    img: img("SHANKAR SUNAR.jpg")
   },
   {
     name: "KAUSHILA CHHETRI",
@@ -309,7 +309,7 @@ export const artists = [
     address: "",
     dob: "2065-06-16",
     contact: "9707322453",
-    img: img("KAUSHILA CHHETRI.jpeg")
+    img: img("KAUSHILA CHHETRI.jpg")
   },
   {
     name: "MINA BHUDHATHOKI",
@@ -317,7 +317,7 @@ export const artists = [
     address: "Dang",
     dob: "",
     contact: "",
-    img: img("MINA BHUDHATHOKI.jpeg")
+    img: img("MINA BHUDHATHOKI.jpg")
   },
   {
     name: "SEDRINA THAKURI",
@@ -325,7 +325,7 @@ export const artists = [
     address: "Kohalpur",
     dob: "2000-04-18",
     contact: "9766661923",
-    img: img("SEDRINA THAKURI.jpeg")
+    img: img("SEDRINA THAKURI.jpg")
   },
   {
     name: "KRISHNA BAHADUR KHADKA",
@@ -333,7 +333,7 @@ export const artists = [
     address: "Okhaldhunga",
     dob: "2050-12-14",
     contact: "9860303543",
-    img: img("KRISHNA BAHADUR KHADKA.jpeg")
+    img: img("KRISHNA BAHADUR KHADKA.jpg")
   },
   {
     name: "NISHANT BK",
@@ -341,7 +341,7 @@ export const artists = [
     address: "Dang",
     dob: "2059-04-27",
     contact: "9864730866",
-    img: img("NISHANT BK.jpeg")
+    img: img("NISHANT BK.jpg")
   },
   {
     name: "REJINA KARKI",
@@ -349,7 +349,7 @@ export const artists = [
     address: "Darchila",
     dob: "2064-09-18",
     contact: "9748877554",
-    img: img("REJINA KARKI.jpeg")
+    img: img("REJINA KARKI.jpg")
   },
   {
     name: "TULASA TAMANG",
@@ -357,7 +357,7 @@ export const artists = [
     address: "Udayapur",
     dob: "2064-07-18",
     contact: "9744422684",
-    img: img("TULASA TAMANG.jpeg")
+    img: img("TULASA TAMANG.jpg")
   },
   {
     name: "ALINA GURUNG",
@@ -365,7 +365,7 @@ export const artists = [
     address: "Sindhupalchowk",
     dob: "2060-10-23",
     contact: "9803964246",
-    img: img("ALINA GURUNG.jpeg")
+    img: img("ALINA GURUNG.jpg")
   },
   {
     name: "KUSUM MAGAR",
@@ -373,7 +373,7 @@ export const artists = [
     address: "Nuwakot",
     dob: "2062-04-19",
     contact: "9768712162",
-    img: img("KUSUM MAGAR.jpeg")
+    img: img("KUSUM MAGAR.jpg")
   },
   {
     name: "BHAWANA MAGAR",
@@ -381,7 +381,7 @@ export const artists = [
     address: "Pyuthan",
     dob: "2061-05-14",
     contact: "9768870074",
-    img: img("BHAWANA MAGAR.jpeg")
+    img: img("BHAWANA MAGAR.jpg")
   },
   {
     name: "GITA SHRESTHA",
@@ -389,7 +389,7 @@ export const artists = [
     address: "Ramechhap",
     dob: "2048-02-10",
     contact: "9766460203",
-    img: img("GITA SHRESTHA.jpeg")
+    img: img("GITA SHRESTHA.jpg")
   },
   {
     name: "PURNIMA KHATRI",
@@ -397,7 +397,7 @@ export const artists = [
     address: "Kathnandu",
     dob: "2059-06-05",
     contact: "9863494339",
-    img: img("PURNIMA KHATRI.jpeg")
+    img: img("PURNIMA KHATRI.jpg")
   },
   {
     name: "YAM BAHADUR KHATRI",
@@ -405,7 +405,7 @@ export const artists = [
     address: "Bardiya",
     dob: "2059-03-09",
     contact: "9808207289",
-    img: img("YAM BAHADUR KHATRI.jpeg")
+    img: img("YAM BAHADUR KHATRI.jpg")
   },
   {
     name: "AJIT RANA MAGAR",
@@ -413,7 +413,7 @@ export const artists = [
     address: "Makwanpur",
     dob: "2061-07-25",
     contact: "9762414808",
-    img: img("AJIT RANA MAGAR.jpeg")
+    img: img("AJIT RANA MAGAR.jpg")
   },
   {
     name: "SARISMA TAMANG",
@@ -421,7 +421,7 @@ export const artists = [
     address: "Nuwakot",
     dob: "2058-07-22",
     contact: "9702713472",
-    img: img("SARISMA TAMANG.jpeg")
+    img: img("SARISMA TAMANG.jpg")
   },
   {
     name: "YOGENDRA BIKRAM CHAND",
@@ -429,7 +429,7 @@ export const artists = [
     address: "Kailali",
     dob: "2056-08-09",
     contact: "9767415451",
-    img: img("YOGENDRA BIKRAM CHAND.jpeg")
+    img: img("YOGENDRA BIKRAM CHAND.jpg")
   },
   {
     name: "SWORUP LAKHE",
@@ -437,7 +437,7 @@ export const artists = [
     address: "Dhalekwar",
     dob: "2063-05-24",
     contact: "9709164533",
-    img: img("SWORUP LAKHE.jpeg")
+    img: img("SWORUP LAKHE.jpg")
   },
   {
     name: "BHABITA SUNUWAR",
@@ -445,7 +445,7 @@ export const artists = [
     address: "Okhaldhunga",
     dob: "2062-03-10",
     contact: "9767410163",
-    img: img("BHABITA SUNUWAR.jpeg")
+    img: img("BHABITA SUNUWAR.jpg")
   },
   {
     name: "AMRITA BOHORA",
@@ -453,7 +453,7 @@ export const artists = [
     address: "Baglung",
     dob: "2061-04-24",
     contact: "9745300534",
-    img: img("AMRITA BOHORA.jpeg")
+    img: img("AMRITA BOHORA.jpg")
   },
   {
     name: "SOBITA ADHIKARI",
@@ -461,7 +461,7 @@ export const artists = [
     address: "Lamgung",
     dob: "2053-06-26",
     contact: "9745665995",
-    img: img("SOBITA ADHIKARI.jpeg")
+    img: img("SOBITA ADHIKARI.jpg")
   },
   {
     name: "ASMITA GURUNG",
@@ -469,6 +469,6 @@ export const artists = [
     address: "Sindhupalchowk",
     dob: "",
     contact: "",
-    img: img("ASMITA GURUNG.jpeg")
+    img: img("ASMITA GURUNG.jpg")
   }
 ];

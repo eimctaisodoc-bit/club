@@ -1,5 +1,5 @@
 import { useState, useCallback, memo } from "react";
-import { ChevronLeft, ChevronRight, Briefcase, MapPin, Calendar, Phone, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, Briefcase, Sparkles, ExternalLink } from "lucide-react";
 import { artists } from "./artist";
 
 // Golden styled icon button
@@ -133,31 +133,26 @@ export default function NavyGoldStaffTestimonials() {
                     </span>
                   </div>
 
-                  {/* Details Grid (Mobile: 1 col, SM: 2 col) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-gray-300 w-full">
-                    
-                    <div className="flex items-center justify-start gap-3 w-full group/item">
+                  {/* Work At Link Section */}
+                  <div className="flex items-center justify-center md:justify-start w-full">
+                    <div className="flex items-center gap-3 group/item">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 border border-white/10 group-hover/item:border-[#FFD700]/50 group-hover/item:shadow-[0_0_10px_rgba(255,215,0,0.2)] transition-all">
-                        <MapPin size={16} className="text-[#FFD700]" />
+                        <ExternalLink size={16} className="text-[#FFD700]" />
                       </div>
-                      <span className="text-sm font-light truncate">{activeArtist.address}</span>
+                      <span className="text-sm font-light text-gray-300">
+                        Work at{" "}
+                        <a 
+                          href="https://www.facebook.com/durbarrodhigharbishowjyotimall4thmall/about" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="font-medium text-white hover:text-[#FFD700] underline-offset-4 hover:underline transition-all"
+                        >
+                          Top Durbar Rodhi Club
+                        </a>
+                      </span>
                     </div>
-                    
-                    <div className="flex items-center justify-start gap-3 w-full group/item">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 border border-white/10 group-hover/item:border-[#FFD700]/50 group-hover/item:shadow-[0_0_10px_rgba(255,215,0,0.2)] transition-all">
-                        <Calendar size={16} className="text-[#FFD700]" />
-                      </div>
-                      <span className="text-sm font-light truncate">{activeArtist.dob}</span>
-                    </div>
-
-                    <div className="flex items-center justify-start gap-3 w-full group/item">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 border border-white/10 group-hover/item:border-[#FFD700]/50 group-hover/item:shadow-[0_0_10px_rgba(255,215,0,0.2)] transition-all">
-                        <Phone size={16} className="text-[#FFD700]" />
-                      </div>
-                      <span className="text-sm font-light tracking-wide truncate">{activeArtist.contact}</span>
-                    </div>
-                    
                   </div>
+
                 </div>
 
               </div>
