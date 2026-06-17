@@ -12,7 +12,7 @@ import {
 
 const TABS = ["All", "Music", "Dance"];
 const imageMap = import.meta.glob(
-  "../../assets/team/*.{jpg,jpg,webp,png}",
+  "../../assets/team/*.{jpg,jpeg,webp,png}",
   { eager: true, import: "default" }
 );
 
@@ -38,9 +38,9 @@ const attractions = [
 ];
 
 const team = [
-  { role: "Founder", name: "Ashok", image: img("Ashok giri.jpg")},
+  { role: "Founder", name: "Ashok Giri", image: img("Founder.jpg")},
   { role: "CEO", name: "Dipak Khadka", image: img("CEO.jpg")},
-  { role: "Managing Director", name: "Bikash Thapa", image:  img("Founder.jpg") },
+  { role: "Managing Director", name: "Kamal Giri", image:  img("kamal.jpeg") },
   { role: "Manager", name: "Rajan Giri", image: img("Rajan giri.jpg") },
 ];
 
